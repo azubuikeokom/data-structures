@@ -17,6 +17,8 @@ class BinaryTree{
         this.moveLeft=this.moveLeft.bind(this);
         this.moveRight=this.moveRight.bind(this);
         this.compareNodeWithCurrent=this.compareNodeWithCurrent.bind(this);
+        this.getMin=this.getMin.bind(this);
+        this.getMax=this.getMax.bind(this);
     }
     insert(data){
         var node=new Node(data,null,null);  
@@ -55,11 +57,25 @@ class BinaryTree{
             this.compareNodeWithCurrent(node);
         }
     }
+    getMax(){
+        this.current=this.root;
+        while(this.current.right!=null){
+            this.current=this.current.right;
+        }
+        return console.log("Max value: ",this.current.data);
+    }
+    getMin(){
+        this.current=this.root;
+        while(this.current.left!=null){
+            this.current=this.current.left;
+        }
+        return console.log("Min value: ",this.current.data);
+    }
 }
 function inOrder(node){
     if(node!=null){
         inOrder(node.left);
-        console.log(node.show()+"");
+        console.log(node.show()+"");              
         inOrder(node.right);
     }
 }
@@ -71,8 +87,11 @@ bst.insert(13);
 bst.insert(86);
 bst.insert(12);
 bst.insert(100);
+bst.insert(1);
 bst.insert(4);
 bst.insert(8);
 bst.insert(35);
 bst.insert(44);
 inOrder(bst.root);
+bst.getMax();
+bst.getMin();
