@@ -19,6 +19,95 @@ class BinaryTree{
         this.compareNodeWithCurrent=this.compareNodeWithCurrent.bind(this);
         this.getMin=this.getMin.bind(this);
         this.getMax=this.getMax.bind(this);
+        this.find=this.find.bind(this);
+        this.checkLeftNode=this.checkLeftNode.bind(this);
+        this.checkRightNode=this.checkRightNode.bind(this);
+    }
+    find(data){
+        this.current=this.root;
+        if(this.current.data==data){
+            console.log("found",this.current.data);
+            
+        }   
+        else if(this.current.data>data){
+            if(this.current.left!=null){
+                this.current=this.current.left;
+                return this.checkLeftNode(data);
+            }
+            else{
+                console.log("Not found!")
+            }
+          
+        } 
+        else if(this.current.data<data){
+            if(this.current.right!=null){
+                this.current=this.current.right;
+                return this.checkRightNode(data);
+            }
+            else{
+                console.log("Not found!")
+            }
+            
+        }
+        else{
+            return ;
+        }
+    }
+    checkLeftNode(data){
+        if(this.current.data==data){
+            console.log("found",this.current.data);
+        }   
+        else if(this.current.data>data){
+            if(this.current.left!=null){
+                this.current=this.current.left;
+                return this.checkLeftNode(data);
+            }
+            else{
+                console.log("Not found!")
+            }
+          
+        } 
+        else if(this.current.data<data){
+            if(this.current.right!=null){
+                this.current=this.current.right;
+                return this.checkRightNode(data);
+            }
+            else{
+                console.log("Not found!")
+            }
+            
+        }
+        else{
+            return ;
+        }
+    }
+    checkRightNode(data){
+        if(this.current.data==data){
+            console.log("found",this.current.data);
+        }   
+        else if(this.current.data>data){
+            if(this.current.left!=null){
+                this.current=this.current.left;
+                return this.checkLeftNode(data);
+            }
+            else{
+                console.log("Not found!")
+            }
+          
+        } 
+        else if(this.current.data<data){
+            if(this.current.right!=null){
+                this.current=this.current.right;
+                return this.checkRightNode(data);
+            }
+            else{
+                console.log("Not found!")
+            }
+            
+        }
+        else{
+            return ;
+        }
     }
     insert(data){
         var node=new Node(data,null,null);  
@@ -95,3 +184,4 @@ bst.insert(44);
 inOrder(bst.root);
 bst.getMax();
 bst.getMin();
+bst.find(1000);
